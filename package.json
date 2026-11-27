@@ -1,1 +1,1 @@
-{"name":"pagewise-capture","version":"1.0.0","license":"MIT","private":true,"scripts":{"test":"node test/stitch.test.js","lint":"web-ext lint","build":"web-ext build --overwrite-dest"}}
+{"name":"pagewise-capture","version":"1.0.1","license":"MIT","private":true,"scripts":{"test":"node test/stitch.test.js","lint":"web-ext lint","build":"web-ext build --overwrite-dest"}}
