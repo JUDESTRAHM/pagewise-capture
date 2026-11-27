@@ -13,7 +13,7 @@ const toImage = async (dataUrl) => createImageBitmap(await (await fetch(dataUrl)
 async function captureVisible(tab) {
   await ensureContent(tab.id);
   const m = await browser.tabs.sendMessage(tab.id, { type: "measure" });
-  const url = await browser.tabs.captureTab(tab.id, { format: "png" });
+  const url = await browser.tabs.captureVisibleTab(tab.windowId, { format: "png" });
   return { bitmap: await toImage(url), dpr: m.dpr };
 }
 
@@ -26,7 +26,7 @@ async function captureFull(tab) {
     for (let i = 0; i < positions.length; i++) {
       const r = await browser.tabs.sendMessage(tab.id, { type: "scroll", y: positions[i], settle: i === 0 ? 100 : 200 });
       if (i === 1) await browser.tabs.sendMessage(tab.id, { type: "hideFixed" });
-      const url = await browser.tabs.captureTab(tab.id, { format: "png" });
+      const url = await browser.tabs.captureVisibleTab(tab.windowId, { format: "png" });
       tiles.push({ y: r.y, bitmap: await toImage(url) });
       if (i === 1) await sleep(50);
     }
@@ -59,7 +59,7 @@ async function captureSelection(tab) {
   const r = await browser.tabs.sendMessage(tab.id, { type: "select" });
   if (!r) return null;
   const m = await browser.tabs.sendMessage(tab.id, { type: "measure" });
-  const url = await browser.tabs.captureTab(tab.id, { format: "png", rect: { x: r.x + m.scrollX, y: r.y + m.scrollY, width: r.w, height: r.h }, scale: m.dpr });
+  const url = await browser.tabs.captureVisibleTab(tab.windowId, { format: "png", rect: { x: r.x + m.scrollX, y: r.y + m.scrollY, width: r.w, height: r.h }, scale: m.dpr });
   return { bitmap: await toImage(url) };
 }
 
