@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Pagewise Capture settings</title><link rel="stylesheet" href="ui.css"></head>
+<body><div class="page"><h1>Pagewise Capture settings</h1>
+<label>Format <select id="format"><option value="png">PNG</option><option value="jpg">JPG</option></select></label>
+<label>JPG quality (1-100) <input id="quality" type="number" min="1" max="100"></label>
+<label>After capture <select id="afterCapture"><option value="preview">Open preview tab</option><option value="save">Save to Downloads immediately</option></select></label>
+<label>File name <input id="template" size="30"> <small>{date} becomes a timestamp</small></label>
+<p>Shortcuts: Alt+Shift+F full page, Alt+Shift+V visible, Alt+Shift+S selection. Change them at about:addons, gear menu, Manage Extension Shortcuts.</p>
+<p>Everything runs locally. This extension makes no network requests and collects no data.</p>
+<p id="saved"></p></div><script src="options.js"></script></body></html>

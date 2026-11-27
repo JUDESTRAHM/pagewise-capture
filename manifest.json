@@ -1,0 +1,74 @@
+{
+  "manifest_version": 3,
+  "name": "Pagewise Capture: Full Page Screenshot",
+  "version": "1.0.0",
+  "description": "Capture the visible area, the full page or a selected region. Save as PNG/JPG or copy. Silent, local, no tracking.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "pagewise-capture@strahmdigital.com",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage",
+    "clipboardWrite"
+  ],
+  "background": {
+    "scripts": [
+      "lib/stitch.js",
+      "background.js"
+    ]
+  },
+  "action": {
+    "default_title": "Pagewise Capture",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+P"
+      },
+      "description": "Open Pagewise Capture"
+    },
+    "capture-full": {
+      "suggested_key": {
+        "default": "Alt+Shift+F"
+      },
+      "description": "Capture full page"
+    },
+    "capture-visible": {
+      "suggested_key": {
+        "default": "Alt+Shift+V"
+      },
+      "description": "Capture visible area"
+    },
+    "capture-selection": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Capture selected area"
+    }
+  }
+}
